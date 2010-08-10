@@ -1,1 +1,9 @@
 Welcome to TrevorGrayson.com.
+
+I have chosen to open source TrevorGrayson.com, well... because.  I'm an avid open source person, and a stingy user of github.com.  So might as well use the free repo space and go opensource!
+
+There will be a verying amount of reusable code in here as many pet projects will find itself fluxing in and out of this code base, but notice the work with XSLT.  An underused technology of the internet, XSLT was used to make this whole site.  I banked on using open source standards for XML with embedded stylesheets, which allow me to make meaniful web documents that play well with both machine, and user.  
+
+Unfortunately for me and XSLT, I have not yet proven the indexability of stark XML documents with embedded stylesheets for Google and the other large search engines.  Very sad for my SEO, so until then notice the seemedly ridiculous build.sh for flat html webpages!
+
+-Trevor Grayson
