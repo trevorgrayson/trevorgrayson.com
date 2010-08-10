@@ -11,42 +11,6 @@
 		<link type="text/css" rel="stylesheet" href="/css/reset.css"/>
 		<!--<link type="text/css" rel="stylesheet" href="/chat/chat.css"/>-->
 		<link type="text/css" rel="stylesheet" href="/css/trevorgrayson.css"/>
-		<script type="text/javascript" src="javascripts/jquery.min.js"></script>
-		<script type="text/javascript" src="javascripts/querystring.js"></script>
-		<script type="text/javascript" src="javascripts/jsjac.js"></script>
-		<script type="text/javascript" src="javascripts/xmpp-client.js"></script>
-		<script type="text/javascript">
-		var previously_ran = false;
-		var join_chat_message = "Talk back. Enter Message here."
-
-		rand = Math.floor(Math.random() * 100000000000).toString(); 
-		bro_jid='anon' + rand + '@trevorgrayson.com/anon' + rand;
-		bro_nick= prompt("Hello! What's your name?",'anon' + rand);
-		bro_hash='password';
-		bro_chatroom='trevorgrayson.com@conference.trevorgrayson.com';
-
-		$(document).ready(function(){
-			$('#msgArea').val(join_chat_message);
-
-			$('#send_chat_form').submit(function() {
-				var message = $(this).find('.message').val();
-
-				if (message != '') { //don't send blank mesages!
-					$(this).find('.message').val('');
-				}
-				return false;
-			});
-
-			$('#navigation_form').submit(function(e) {
-				XmppClient.sendMsg($('#navigation_url').val());
-
-				return false;
-			});
-
-		});
-	</script>
-
-		
 	</head>
 	<body>
 		<h1><xsl:value-of select="//vc:FN"/></h1>
