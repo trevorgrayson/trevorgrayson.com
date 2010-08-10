@@ -1,0 +1,21 @@
+#footer{
+	border-top:1px solid black;
+	margin-left:200px;
+	margin-right:200px;
+	margin-top:40px;
+	padding-top:20px;
+	clear:both;
+	text-align:center;
+	font-size:10px;
+}
+#footer a{
+	text-decoration:none;
+	color:black;
+}
+#footer a:hover {
+	text-decoration:underline;
+	color:blue;
+}
+#footer img{
+	border:0px;	
+}

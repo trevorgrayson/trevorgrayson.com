@@ -1,0 +1,38 @@
+div.badass{
+	position:relative;
+	background-image:url('/images/badass.jpg');
+	background-repeat:no-repeat;
+	height:580px;
+	width:896px;
+}
+div.badass ul{
+	float:none;
+	color:#FFF;
+	bottom:0px;
+	position:absolute;
+	text-align:center;
+}
+div.badass li{
+	text-align:center;
+	display:inline;
+	list-style:none;
+	position:absolute;
+	font-weight:bold;
+	bottom:3px;
+}
+#trevor{
+	left:70px;
+}
+#cole{
+	left:370px;
+}
+#tom{
+	left:700px;
+	right:0px;
+}
+p{
+	text-align:center;
+	width:400px;
+	margin-left:auto;
+	margin-right:auto;
+}

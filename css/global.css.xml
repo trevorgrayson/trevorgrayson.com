@@ -1,0 +1,36 @@
+img{
+	border:0px;
+}
+.container{
+	width:650px;
+	margin-left:auto;
+	margin-right:auto;
+}
+#body{
+	padding-left:100px;
+	padding-right:100px;
+	height:250px;
+}
+#body *{
+	float:right;
+	clear:right;
+}
+#body * *{
+	float:none;
+	clear:none;
+}
+#body p{
+	width:400px;
+}
+#body p,li{
+	margin-top:5px;
+	list-style:none;
+	text-align:right;
+}
+a{
+	text-decoration:none;
+	color:brown;
+}
+a:hover {
+	text-decoration:underline;
+}

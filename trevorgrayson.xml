@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="trevorgrayson.html.xsl" type="text/xsl" ?>
+<vCard xmlns="http://xmpp.org/extensions/xep-0054.html">
+	<FN>Trevor Grayson</FN>
+	<N>
+		<FAMILY>Grayson</FAMILY>
+		<GIVEN>Trevor</GIVEN>
+		<MIDDLE>Howard</MIDDLE>
+	</N>
+	<NICKNAME>rovertus</NICKNAME>
+	<URL>http://www.trevorgrayson.com</URL>
+	<BDAY>1982-03-07</BDAY>
+	<ORG>
+		<ORGNAME>Sony Music Entertainment</ORGNAME>
+		<ORGUNIT>Direct to Consumer</ORGUNIT>
+	</ORG>
+	<TITLE>Web Developer</TITLE>
+	<ROLE/>
+	<TEL><HOME/><VOICE/><NUMBER>860-384-9759</NUMBER></TEL>
+	<TEL><HOME/><FAX/><NUMBER/></TEL>
+	<TEL><HOME/><MSG/><NUMBER/></TEL>
+	<ADR>
+		<HOME/>
+		<EXTADD/>
+		<STREET>Financial District</STREET>
+		<LOCALITY>New York</LOCALITY>
+		<REGION>NY</REGION>
+		<PCODE>10038</PCODE>
+		<CTRY>USA</CTRY>
+	</ADR>
+	<EMAIL><INTERNET/><PREF/><USERID>trevor@trevorgrayson.com</USERID></EMAIL>
+	<JABBERID>trevor@trevorgrayson.com</JABBERID>
+	<AIMID>trevorgrayson</AIMID>
+	<DESC>
+		
+	</DESC>
+	<projects xmlns="http://trevorgrayson.com">
+		<project name="Remembory" href="http://remembory.com">Memory improved by membory.</project>
+		<project name="PhotoDB" href="http://thephotodb.com">A progressive Photo Management System.</project>
+		<project name="Freelance" href="/freelance.html">Freelancing Projects</project>
+	</projects>
+	<resume xmlns="http://trevorgrayson.com">
+		<format name="doc" href="/TrevorGraysonResume.doc"/>
+		<format name="pdf" href="/TrevorGraysonResume.pdf"/>
+	</resume>
+</vCard>
+
