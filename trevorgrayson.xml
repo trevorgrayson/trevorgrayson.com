@@ -42,6 +42,7 @@
 	<resume xmlns="http://trevorgrayson.com">
 		<format name="doc" href="/TrevorGraysonResume.doc"/>
 		<format name="pdf" href="/TrevorGraysonResume.pdf"/>
+		<format name="html" href="/TrevorGraysonResume.html"/>
 	</resume>
 </vCard>
 

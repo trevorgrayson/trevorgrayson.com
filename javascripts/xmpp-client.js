@@ -42,7 +42,7 @@ XmppClient = {
 			'<div id="sendmsg_pane">' + 
 				'<form name="send_chat_form" id="send_chat_form">' + 
 					'<input type="hidden" name="sendTo" tabindex="1" value="tgrayson@trevorgrayson.com/home"/>' + 
-					'<textarea name="msg" id="msgArea" class="message" rows="3" cols="80" tabindex="2"></textarea>' + 
+					'<textarea name="msg" id="msgArea" class="message" rows="3" tabindex="2"></textarea>' + 
 					'<!--<input type="submit"/>-->' + 
 				'</form>' + 
 			'</div>' + 

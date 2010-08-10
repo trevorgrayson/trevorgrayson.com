@@ -88,3 +88,14 @@ a {
 	margin-left: 10px;
 }
 
+/* xmpp-client */
+#xmppclient-widget {
+	position: absolute;
+	right: 5px;
+	bottom: 5px;
+	width: 200px;
+}
+
+#msgArea {
+	width: 100%;
+}
