@@ -263,20 +263,20 @@ colors:['#3366FF','#CC33FF','#FF3366','#FFCC33','#66FF33','#33FFCC','#003DF5','#
   },
 
   login: function(jid_str, hash){
-		if( jid_str != undefined ){
-			JSJaCCookie('xmppclient_jid',jid_str).write();
-			JSJaCCookie('xmppclient_password',hash).write();
-		} else {
-			try {
-				if( JSJaCCookie.get('xmppclient_jid') ) {
-					jid_str = JSJaCCookie.get('xmppclient_jid');
-					hash = JSJaCCookie.get('xmppclient_password');
-				} else {
-					return false;
-				}
-			} catch(e) {
-				return false;
+		try {
+			if( JSJaCCookie.get('xmppclient_jid') ) {
+				jid_str = JSJaCCookie.get('xmppclient_jid');
+				hash = JSJaCCookie.get('xmppclient_password');
 			} 
+		} catch(e) {} 
+
+		try {
+			if(jid_str != undefined) {
+				JSJaCCookie('xmppclient_jid',jid_str).write();
+				JSJaCCookie('xmppclient_password',hash).write();
+			}
+		} catch(e) {
+			return false;
 		}
     
     var jid = new JSJaCJID(jid_str);
