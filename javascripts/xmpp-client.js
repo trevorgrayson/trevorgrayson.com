@@ -1,6 +1,6 @@
 /*jslint browser: true */
 /*global JSJaCConsoleLogger, JSJaCCookie, aJSJaCPacket, JSJaCPresence, 
-  JSJaCMessage, JSJaCJID, JSJaCHttpBindingConnection, SONYMUSIC_COPPA_13,
+  JSJaCMessage, JSJaCJID, JSJaCHttpBindingConnection, 
   bro_username, bro_timestamp, bro_hash, oDbg: true, window */
 (function($) {
 
@@ -8,31 +8,25 @@ XmppClient = {
   user_jid: null,
   chat_jid: null,
   message: 'Talk Back. Enter your text here.',
-  colors: ['#3366FF', '#CC33FF', '#FF3366', '#FFCC33', '#66FF33', '#33FFCC', '#003DF5', '#002EB8', '#F5B800', '#B88A00', '#6633FF', '#FF33CC', '#FF6633', '#CCFF33', '#33FF66', '#33CCFF'],
+colors:['#3366FF','#CC33FF','#FF3366','#FFCC33','#66FF33','#33FFCC','#003DF5','#002EB8','#F5B800','#B88A00','#6633FF','#FF33CC','#FF6633','#CCFF33','#33FF66','#33CCFF'],
   user_hash: {},
-  init: function() {
+  init: function(username, password) {
     // for debugging only.
-    if (window.location.querystring['debug'] == 'true') {
+    if (window.location.toString().match(/debug/)) {
       oDbg = new JSJaCConsoleLogger(2);
     }
 
-		XmppClient.append_widget('body');
-		XmppClient.bind_send_form('send_chat_form');
-    
-    $('input.message').data('message',this.message).focus(function() {
+    //$('input.message').data('message',this.message).focus(function() {
 
-      if($(this).val() == $(this).data('message') ){
-        $(this).val('');
-      }
-    });
+    //  if($(this).val() == $(this).data('message') ){
+    //    $(this).val('');
+    //  }
+    //});
 
-    $('input.message').val(this.message);
+    //$('input.message').val(this.message);
 
-    if (bro_jid && bro_hash) {
-      XmppClient.login(bro_jid, bro_hash);
-    }
-    
-    XmppClient.chat_jid = new JSJaCJID(window.bro_chatroom);
+		XmppClient.login(username, password);
+		XmppClient.chat_jid = new JSJaCJID(window.xmppclient_chatroom);
   },
 
 	append_widget: function(target) {
@@ -97,7 +91,9 @@ XmppClient = {
       //  $(this).scrollTo('max').dequeue();
       //});
 		
-		new_element.delay(9000).fadeOut('slow');
+		//Should just return element so they may run whatever things on it
+		//new_element.delay(9000).fadeOut('slow');
+		//return new_element;
   },
   
   infoMessage: function(message) {
@@ -184,21 +180,25 @@ XmppClient = {
   
   handleConnected: function() {
     if ( XmppClient.joinChatroom() ) {
-      if( this.username && !XmppClient.isAnonymous(XmppClient.getNick())) {
+      if( this.username /*&& !XmppClient.isAnonymous(XmppClient.getNick())*/) {
         $('#send_chat_form').show();
         XmppClient.infoMessage('Welcome to the chatroom ' + XmppClient.getNick());
       }
       this.send(new JSJaCPresence());
     } else {
+			console.debug('could not register w/ chat');
       XmppClient.errorMessage('could not register w/ chat');
     }
   },
 
   handleResume: function() {
-    if(this.username && !XmppClient.isAnonymous(XmppClient.getNick())) {
+    if(this.username /*&& !XmppClient.isAnonymous(XmppClient.getNick())*/) {
       $('#send_chat_form').show();
       XmppClient.infoMessage('Your are logged in as ' + XmppClient.getNick());
       this.send(new JSJaCPresence());
+      
+			XmppClient.append_widget('body');
+			XmppClient.bind_send_form('send_chat_form');
     }
   },
 
@@ -230,7 +230,7 @@ XmppClient = {
 
   getIcon: function() {
     try {
-      return JSJaCCookie.get('bro_icon');
+      return JSJaCCookie.get('xmppclient_icon');
     }
     catch (e) {
       return 'http://null/images/nophoto.gif';
@@ -238,27 +238,22 @@ XmppClient = {
   },
 
   getNick: function() {
-    //return XmppClient.user_jid.getResource();
-    return window.bro_nick;
+    return XmppClient.user_jid.toString().split('/')[1];
   },
 	
   chatroom: function() {
     return XmppClient.chat_jid.toString();
   },
 
-  sendMsg: function(message/*,extra*/) {
-    var icon = XmppClient.getIcon();
-    var extra = {'drupal_user': {'icon': icon} };
-    
+  sendMsg: function(message) {
     try {
       var aMsg = new JSJaCMessage();
       aMsg.setTo(XmppClient.chat_jid);
-      aMsg.setType('groupchat');
       aMsg.setBody(message);
 
-      $.each(extra, function(obj, attribs) {
-        icon = aMsg.appendNode(obj,attribs);
-      });
+			if( XmppClient.chat_jid.toString().match(/@conference/) ) {
+				aMsg.setType('groupchat');
+			}
 
       XmppClient.con.send(aMsg);
 
@@ -268,9 +263,25 @@ XmppClient = {
   },
 
   login: function(jid_str, hash){
+		if( jid_str != undefined ){
+			JSJaCCookie('xmppclient_jid',jid_str).write();
+			JSJaCCookie('xmppclient_password',hash).write();
+		} else {
+			try {
+				if( JSJaCCookie.get('xmppclient_jid') ) {
+					jid_str = JSJaCCookie.get('xmppclient_jid');
+					hash = JSJaCCookie.get('xmppclient_password');
+				} else {
+					return false;
+				}
+			} catch(e) {
+				return false;
+			} 
+		}
+    
     var jid = new JSJaCJID(jid_str);
     XmppClient.user_jid = jid;
-    
+
     try {
       // setup args for contructor
       var oArgs = {};
@@ -295,6 +306,8 @@ XmppClient = {
         con.connect(oArgs);
       }
       
+			XmppClient.append_widget('body');
+			XmppClient.bind_send_form('send_chat_form');
 
     } catch (e) {
       $('#bro_error').html(e.toString());
@@ -303,7 +316,7 @@ XmppClient = {
   
   destroy: function() {
     var con = XmppClient.con;
-    if (XmppClient.isAnonymous(XmppClient.getNick())) {
+    if (typeof nick != 'undefined' && XmppClient.isAnonymous(XmppClient.getNick())) {
       con.disconnect();
     }
     else if (typeof con != 'undefined' && con && con.connected()) {
