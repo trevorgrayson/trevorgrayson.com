@@ -69,6 +69,7 @@
 			<xsl:apply-templates select="vc:ADR"/>
 			<li>im: <a href="aim:goim?screenname={vc:AIMID}"><xsl:value-of select="vc:AIMID"/></a></li>
 			<li>e: <a href="mailto:{vc:EMAIL}"><xsl:value-of select="vc:EMAIL"/></a></li>
+			<li><a href="javascript:var name= prompt('What is your name?');XmppClient.init(name + '@trevorgrayson.com/' + name, 'password')">Talk Now</a></li>
 		</ul>
 	</li>
 </xsl:template>
