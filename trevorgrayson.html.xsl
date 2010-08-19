@@ -40,7 +40,6 @@
 
 			$('#navigation_form').submit(function(e) {
 				var message = $('#navigation_url').val();
-				XmppClient.addMessage(message,"You");
 				XmppClient.sendMsg(message);
 
 				return false;

@@ -235,6 +235,8 @@ colors:['#3366FF','#CC33FF','#FF3366','#FFCC33','#66FF33','#33FFCC','#003DF5','#
 
 			if( XmppClient.chat_jid.toString().match(/@conference/) ) {
 				aMsg.setType('groupchat');
+			} else {
+				XmppClient.addMessage( message, XmppClient.getNick() );
 			}
 
       XmppClient.con.send(aMsg);
