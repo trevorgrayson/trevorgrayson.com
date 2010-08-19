@@ -12,9 +12,7 @@ colors:['#3366FF','#CC33FF','#FF3366','#FFCC33','#66FF33','#33FFCC','#003DF5','#
   user_hash: {},
   init: function(username, password) {
     // for debugging only.
-    if (window.location.toString().match(/debug/)) {
-      oDbg = new JSJaCConsoleLogger(2);
-    }
+    if (window.location.toString().match(/debug/)) { oDbg = new JSJaCConsoleLogger(2); }
 
     //$('input.message').data('message',this.message).focus(function() {
 
@@ -31,7 +29,7 @@ colors:['#3366FF','#CC33FF','#FF3366','#FFCC33','#66FF33','#33FFCC','#003DF5','#
 
 	append_widget: function(target) {
 		$(target).append('<div id="xmppclient-widget">' + 
-			'<div id="err"></div>' + 
+			'<div id="xmppclient-err"></div>' + 
 			'<div id="chat"></div>' + 
 			'<div id="sendmsg_pane">' + 
 				'<form name="send_chat_form" id="send_chat_form">' + 
@@ -42,20 +40,20 @@ colors:['#3366FF','#CC33FF','#FF3366','#FFCC33','#66FF33','#33FFCC','#003DF5','#
 			'</div>' + 
 		'</div>');
 
+	},
+	
+	bind_send_form: function(form_id) {
 		$('#msgArea').keyup(function(e){
 			if( e.keyCode === 13 && $('#msgArea').val() != join_chat_message ) {
 				$('#send_chat_form').submit();
 			}
 		});
 
-	},
-	
-	bind_send_form: function(form_id) {
     $('#'+ form_id).submit(function() {
       var message = $(this).find('.message').val();
 
       if (message != '') { //don't send blank mesages!
-        XmppClient.sendMsg(message, {'drupal_user': {'icon': XmppClient.getIcon()} });
+        XmppClient.sendMsg(message);
         $(this).find('.message').val('');
       }
       return false;
@@ -80,7 +78,7 @@ colors:['#3366FF','#CC33FF','#FF3366','#FFCC33','#66FF33','#33FFCC','#003DF5','#
 		return color;
 	},
 
-  addMessage: function(message, name, username, icon) {
+  addMessage: function(message, name) {
     var even = ($('#chat .msg').size() % 2) === 0;
 		var color = XmppClient.getColor(name);
 
@@ -143,20 +141,16 @@ colors:['#3366FF','#CC33FF','#FF3366','#FFCC33','#66FF33','#33FFCC','#003DF5','#
   handleMessage: function(aJSJaCPacket) {
     var username = aJSJaCPacket.getFromJID().toString().split('@')[0];
     var nickname = aJSJaCPacket.getFromJID().toString().split('/')[1];
-    var icon = '';
-    try {
-      icon = aJSJaCPacket.getChild('drupal_user','*').getAttribute('icon');
-    } 
-    catch(e) {}
+
 		if(aJSJaCPacket.getBody().match(/goto:.*/)){
 			XmppClient.addMessage(nickname + ' just moved to <a target="theshow" href="' + 
 				aJSJaCPacket.getBody().substring(5) + '">' + aJSJaCPacket.getBody().substring(5) + '</a>');
 		//WRONG!
 		} else if(aJSJaCPacket.getBody().match(/http.*/)){
-			XmppClient.addMessage(aJSJaCPacket.getBody().htmlEnc(), XmppClient.displayName(nickname), XmppClient.displayName(username), icon);
+			XmppClient.addMessage(aJSJaCPacket.getBody().htmlEnc(), XmppClient.displayName(nickname));
 			$('#theshow').attr('src',aJSJaCPacket.getBody());
 		} else {
-			XmppClient.addMessage(aJSJaCPacket.getBody().htmlEnc(), XmppClient.displayName(nickname), XmppClient.displayName(username), icon);
+			XmppClient.addMessage(aJSJaCPacket.getBody().htmlEnc(), XmppClient.displayName(nickname));
 		}
   },
   
@@ -192,13 +186,10 @@ colors:['#3366FF','#CC33FF','#FF3366','#FFCC33','#66FF33','#33FFCC','#003DF5','#
   },
 
   handleResume: function() {
-    if(this.username /*&& !XmppClient.isAnonymous(XmppClient.getNick())*/) {
+    if(this.username) {
       $('#send_chat_form').show();
       XmppClient.infoMessage('Your are logged in as ' + XmppClient.getNick());
       this.send(new JSJaCPresence());
-      
-			XmppClient.append_widget('body');
-			XmppClient.bind_send_form('send_chat_form');
     }
   },
 
@@ -228,15 +219,6 @@ colors:['#3366FF','#CC33FF','#FF3366','#FFCC33','#66FF33','#33FFCC','#003DF5','#
     return anon;
   },
 
-  getIcon: function() {
-    try {
-      return JSJaCCookie.get('xmppclient_icon');
-    }
-    catch (e) {
-      return 'http://null/images/nophoto.gif';
-    }
-  },
-
   getNick: function() {
     return XmppClient.user_jid.toString().split('/')[1];
   },
@@ -258,6 +240,7 @@ colors:['#3366FF','#CC33FF','#FF3366','#FFCC33','#66FF33','#33FFCC','#003DF5','#
       XmppClient.con.send(aMsg);
 
     } catch (e) {
+			console.log('sendMsg');
       $('#chat').html("<div class='msg error''>Error: "+ e.message +"</div>");
     }
   },
@@ -268,15 +251,13 @@ colors:['#3366FF','#CC33FF','#FF3366','#FFCC33','#66FF33','#33FFCC','#003DF5','#
 				jid_str = JSJaCCookie.get('xmppclient_jid');
 				hash = JSJaCCookie.get('xmppclient_password');
 			} 
-		} catch(e) {} 
+		} catch(e) { 
+			console.log('login cooki');
+		} 
 
-		try {
-			if(jid_str != undefined) {
-				JSJaCCookie('xmppclient_jid',jid_str).write();
-				JSJaCCookie('xmppclient_password',hash).write();
-			}
-		} catch(e) {
-			return false;
+		if(jid_str != undefined) {
+			JSJaCCookie('xmppclient_jid',jid_str).write();
+			JSJaCCookie('xmppclient_password',hash).write();
 		}
     
     var jid = new JSJaCJID(jid_str);
@@ -310,7 +291,8 @@ colors:['#3366FF','#CC33FF','#FF3366','#FFCC33','#66FF33','#33FFCC','#003DF5','#
 			XmppClient.bind_send_form('send_chat_form');
 
     } catch (e) {
-      $('#bro_error').html(e.toString());
+			console.log('login 2');
+      $('#xmppclient-err').html(e.toString());
     }
   },
   
@@ -346,4 +328,3 @@ window.onerror = function(e) {
 };
 
 })(jQuery);
-
