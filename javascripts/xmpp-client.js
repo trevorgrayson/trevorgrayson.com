@@ -7,7 +7,7 @@
 XmppClient = {
   user_jid: null,
   chat_jid: null,
-  message: 'Talk Back. Enter your text here.',
+  join_chat_message: 'Say Hi to Trevor. Enter your text here.',
 colors:['#3366FF','#CC33FF','#FF3366','#FFCC33','#66FF33','#33FFCC','#003DF5','#002EB8','#F5B800','#B88A00','#6633FF','#FF33CC','#FF6633','#CCFF33','#33FF66','#33CCFF'],
   user_hash: {},
   init: function(username, password) {
@@ -34,7 +34,7 @@ colors:['#3366FF','#CC33FF','#FF3366','#FFCC33','#66FF33','#33FFCC','#003DF5','#
 			'<div id="sendmsg_pane">' + 
 				'<form name="send_chat_form" id="send_chat_form">' + 
 					'<input type="hidden" name="sendTo" tabindex="1" value="tgrayson@trevorgrayson.com/home"/>' + 
-					'<textarea name="msg" id="msgArea" class="message" rows="3" tabindex="2"></textarea>' + 
+					'<textarea name="msg" id="msgArea" class="message" rows="3" tabindex="2">' + XmppClient.join_chat_message + '</textarea>' + 
 					'<!--<input type="submit"/>-->' + 
 				'</form>' + 
 			'</div>' + 
@@ -44,8 +44,14 @@ colors:['#3366FF','#CC33FF','#FF3366','#FFCC33','#66FF33','#33FFCC','#003DF5','#
 	
 	bind_send_form: function(form_id) {
 		$('#msgArea').keyup(function(e){
-			if( e.keyCode === 13 && $('#msgArea').val() != join_chat_message ) {
+			if( e.keyCode === 13 && $('#msgArea').val() != XmppClient.join_chat_message ) {
 				$('#send_chat_form').submit();
+			}
+		});
+
+		$('#msgArea').focus(function(e){
+			if(this.value == XmppClient.join_chat_message) {
+				$(this).val('');
 			}
 		});
 
@@ -176,11 +182,10 @@ colors:['#3366FF','#CC33FF','#FF3366','#FFCC33','#66FF33','#33FFCC','#003DF5','#
     if ( XmppClient.joinChatroom() ) {
       if( this.username /*&& !XmppClient.isAnonymous(XmppClient.getNick())*/) {
         $('#send_chat_form').show();
-        XmppClient.infoMessage('Welcome to the chatroom ' + XmppClient.getNick());
+        XmppClient.infoMessage('Welcome ' + XmppClient.getNick());
       }
       this.send(new JSJaCPresence());
     } else {
-			console.debug('could not register w/ chat');
       XmppClient.errorMessage('could not register w/ chat');
     }
   },
@@ -242,7 +247,6 @@ colors:['#3366FF','#CC33FF','#FF3366','#FFCC33','#66FF33','#33FFCC','#003DF5','#
       XmppClient.con.send(aMsg);
 
     } catch (e) {
-			console.log('sendMsg');
       $('#chat').html("<div class='msg error''>Error: "+ e.message +"</div>");
     }
   },
@@ -253,9 +257,7 @@ colors:['#3366FF','#CC33FF','#FF3366','#FFCC33','#66FF33','#33FFCC','#003DF5','#
 				jid_str = JSJaCCookie.get('xmppclient_jid');
 				hash = JSJaCCookie.get('xmppclient_password');
 			} 
-		} catch(e) { 
-			console.log('login cooki');
-		} 
+		} catch(e) { } 
 
 		if(jid_str != undefined) {
 			JSJaCCookie('xmppclient_jid',jid_str).write();
@@ -293,7 +295,6 @@ colors:['#3366FF','#CC33FF','#FF3366','#FFCC33','#66FF33','#33FFCC','#003DF5','#
 			XmppClient.bind_send_form('send_chat_form');
 
     } catch (e) {
-			console.log('login 2');
       $('#xmppclient-err').html(e.toString());
     }
   },

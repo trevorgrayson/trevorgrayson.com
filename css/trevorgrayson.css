@@ -90,6 +90,7 @@ a {
 
 /* xmpp-client */
 #xmppclient-widget {
+	background-color: #fff;
 	position: absolute;
 	right: 5px;
 	bottom: 5px;
@@ -98,4 +99,17 @@ a {
 
 #msgArea {
 	width: 100%;
+	line-height: 1.2em;
+	height: 2.4em;
+}
+
+.msg {
+	margin-bottom: 5px;
+}
+
+.msg p {
+	display: inline;
+}
+.msg strong {
+	margin-right: 10px;
 }
