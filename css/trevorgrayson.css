@@ -113,3 +113,17 @@ a {
 .msg strong {
 	margin-right: 10px;
 }
+
+.twtr-widget {
+	margin-left: 120px;
+	margin-top: -20px;
+	width: 200px;
+}
+
+.twtr-ft,
+.twtr-hd {
+	display: none;
+}
+.twtr-tweet-text p {
+	background: transparent url(http://a4.twimg.com/images/favicon.gif) no-repeat bottom right;
+}

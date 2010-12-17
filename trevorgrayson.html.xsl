@@ -17,6 +17,7 @@
 		<script type="text/javascript" src="javascripts/jquery.min.js"></script>
 		<script type="text/javascript" src="javascripts/jsjac.js"></script>
 		<script type="text/javascript" src="javascripts/xmpp-client.js"></script>
+		<script type="text/javascript" src="http://widgets.twimg.com/j/2/widget.js"></script>
 		<script type="text/javascript">
 		var join_chat_message = "Talk back. Enter Message here."
 
@@ -46,6 +47,36 @@
 			});
 
 		});
+		function insert_twitter(){
+			new TWTR.Widget({
+				version: 2,
+				type: 'profile',
+				rpp: 1,
+				interval: 6000,
+				width: 197,
+				height: 300,
+				theme: {
+					shell: {
+						background: 'transparent',
+						color: '#000000'
+					},
+					tweets: {
+						background: 'transparent',
+						color: '#000000',
+						links: '#ab8526'
+					}
+				},
+				features: {
+					scrollbar: false,
+					loop: false,
+					live: false,
+					hashtags: true,
+					timestamp: true,
+					avatars: false,
+					behavior: 'all'
+				}
+			}).render().setUser('TrevorGrayson').start();
+		}
 	</script>
 	</head>
 	<body>
@@ -53,7 +84,10 @@
 		<ul class="menu">
 			<xsl:apply-templates/>
 		</ul>
+		<script>insert_twitter();</script>
 	</body>
+	<xsl:value-of select="//item[1]"/>
+
 </html>
 </xsl:template>
 
