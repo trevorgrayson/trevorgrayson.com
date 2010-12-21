@@ -3,9 +3,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="http://fonts.googleapis.com/css?family=Old+Standard+TT" rel="stylesheet" type="text/css">
-<link type="text/css" rel="stylesheet" href="/css/reset.css">
-<link type="text/css" rel="stylesheet" href="/css/trevorgrayson.css">
-<script type="text/javascript" src="javascripts/jquery.min.js"></script><script type="text/javascript" src="javascripts/jsjac.js"></script><script type="text/javascript" src="javascripts/xmpp-client.js"></script><script type="text/javascript">
+<link type="text/css" rel="stylesheet" href="css/reset.css">
+<link type="text/css" rel="stylesheet" href="css/trevorgrayson.css">
+<script type="text/javascript" src="javascripts/jquery.min.js"></script><script type="text/javascript" src="javascripts/jsjac.js"></script><script type="text/javascript" src="javascripts/xmpp-client.js"></script><script type="text/javascript" src="http://widgets.twimg.com/j/2/widget.js"></script><script type="text/javascript">
 		var join_chat_message = "Talk back. Enter Message here."
 
 		rand = Math.floor(Math.random() * 100000000000).toString(); 
@@ -34,6 +34,36 @@
 			});
 
 		});
+		function insert_twitter(){
+			new TWTR.Widget({
+				version: 2,
+				type: 'profile',
+				rpp: 1,
+				interval: 6000,
+				width: 197,
+				height: 300,
+				theme: {
+					shell: {
+						background: 'transparent',
+						color: '#000000'
+					},
+					tweets: {
+						background: 'transparent',
+						color: '#000000',
+						links: '#ab8526'
+					}
+				},
+				features: {
+					scrollbar: false,
+					loop: false,
+					live: false,
+					hashtags: true,
+					timestamp: true,
+					avatars: false,
+					behavior: 'all'
+				}
+			}).render().setUser('TrevorGrayson').start();
+		}
 	</script>
 </head>
 <body>
@@ -76,5 +106,6 @@
 </ul>
 </li>
 </ul>
+<script>insert_twitter();</script><p class="location"><span class="last-seen">Last Seen: @<a href="http://foursquare.com/venue/341">Botanica Bar</a></span><span class="time">Sat, 18 Dec 10 00:34:05 </span></p>
 </body>
 </html>

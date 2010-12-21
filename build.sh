@@ -1,2 +1,2 @@
 #!/bin/bash
-xsltproc trevorgrayson.html.xsl trevorgrayson.xml > index.html
+xsltproc --xinclude trevorgrayson.html.xsl trevorgrayson.xml > index.html

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <?xml-stylesheet href="trevorgrayson.html.xsl" type="text/xsl" ?>
-<vCard xmlns="http://xmpp.org/extensions/xep-0054.html">
+<vCard xmlns="http://xmpp.org/extensions/xep-0054.html" xmlns:xi="http://www.w3.org/2003/XInclude">
 	<FN>Trevor Grayson</FN>
 	<N>
 		<FAMILY>Grayson</FAMILY>
@@ -44,5 +44,6 @@
 		<format name="pdf" href="/resumes/TrevorGraysonResume.pdf"/>
 		<format name="html" href="/resumes/TrevorGraysonResume.html"/>
 	</resume>
+	<xi:include href="http://feeds.foursquare.com/history/1049fd6217aedd34625ab9db9644f0ef.kml"/>
 </vCard>
 

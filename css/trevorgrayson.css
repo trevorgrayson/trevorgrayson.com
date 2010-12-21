@@ -127,3 +127,16 @@ a {
 .twtr-tweet-text p {
 	background: transparent url(http://a4.twimg.com/images/favicon.gif) no-repeat bottom right;
 }
+
+.location {
+	margin-left: 10px;
+	margin-top: 20px;
+}
+
+.location .last-seen {
+	display: block;
+}
+
+.location .time {
+	font-size: .6em;
+}

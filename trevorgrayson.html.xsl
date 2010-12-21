@@ -12,8 +12,8 @@
 <html>
 	<head>
 		<link href='http://fonts.googleapis.com/css?family=Old+Standard+TT' rel='stylesheet' type='text/css'/>
-		<link type="text/css" rel="stylesheet" href="/css/reset.css"/>
-		<link type="text/css" rel="stylesheet" href="/css/trevorgrayson.css"/>
+		<link type="text/css" rel="stylesheet" href="css/reset.css"/>
+		<link type="text/css" rel="stylesheet" href="css/trevorgrayson.css"/>
 		<script type="text/javascript" src="javascripts/jquery.min.js"></script>
 		<script type="text/javascript" src="javascripts/jsjac.js"></script>
 		<script type="text/javascript" src="javascripts/xmpp-client.js"></script>
@@ -85,10 +85,25 @@
 			<xsl:apply-templates/>
 		</ul>
 		<script>insert_twitter();</script>
+		<p class="location">
+			<span class="last-seen">
+				<xsl:text>Last Seen: @</xsl:text>
+				<a>
+					<xsl:attribute name="href">http://foursquare.com<xsl:value-of select="//Placemark[1]/description/a[1]/@href"/></xsl:attribute>
+					<xsl:value-of select="//Placemark[1]/name"/>
+				</a>
+			</span> 
+			<span class="time"><xsl:value-of select="substring-before(//Placemark[1]/updated, '+')"/></span>
+		</p>
 	</body>
 	<xsl:value-of select="//item[1]"/>
 
 </html>
+</xsl:template>
+
+<xsl:template match="Placemark">
+	<p>Last Seen at: <xsl:value-of select="name"/>
+	<span class="time"><xsl:value-of select="substring-before(updated,'+')"/></span></p>
 </xsl:template>
 
 <xsl:template match="vc:*">
