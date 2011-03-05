@@ -8,14 +8,14 @@
 		<p><strong>Dear Frontend Web Developers,</strong></p>
 		<p>How many times a day do you press F5, or cmd+R while developing CSS for your websites?  What if I could give you several seconds (Or up to a minute, because I know your website sucks and/or is Drupal) of your life back EVERY time you did that?</p>
 		<p>Enter the F6 key. Bookmark the <a href="javascript:$.each($('link'),function(I,link){$(link).remove();$.ajax({url:link.href,context:link,success:function(){(n=document.createElement('link')).setAttribute('href',link.href);n.setAttribute('type','text/css');n.setAttribute('rel','stylesheet');n.setAttribute('media',link.media);document.getElementsByTagName('head')[0].appendChild(n);}});});void(0);">F6 bookmarklet</a>, and you can regain those valuable minutes of your life back. By clicking on this bookmarklet, you will effectively rip all the styling (read: link tags) out of your website, and then pull down your new stylesheets into your document. WOW! That good.</p>
-		<p>Now obviously, this isn't the hugest win in the world, and it's probably down right worthless if you are editing flat HTML pages.  But if your app is slow, or you are trying to avoid firing off some JS every time, this will save just enough time for you not to get lost in twitter. </p>
+		<p>Now obviously, this isn't the hugest win in the world, and it's probably down right worthless if you are editing flat HTML pages.  But if your app is slow, or you are trying to avoid firing off some JS every time, this will save just enough time for you to not get lost in twitter.</p>
 		<p>Also, try putting a keyword on the bookmark in Firefox, and then you can reload it with just a few keystrokes. Keen gear.</p>
 		<h2>Known Issues</h2>
 		<ul>
 			<li>It's named f6.  I'm going to try to make these into a firefox plugin using the f6 key, which is ctrl+L anyways.</li>
-			<li>Presently will only work on sites with jQuery. -- I wrote this on my phone's mail client, gimme a break. I will update it before '1.0'.</li>
-			<li>This won't remove embedded CSS. Feature! Stop using style attributes.</li>
+			<li>Presently will only work on sites with <strong>jQuery</strong>. -- I wrote this on my 3G's mail client, so there are some shortcuts. I will update it before '1.0'.</li>
 			<li>I'm not respecting all the link's attributes.  Funny stuff might happen especially with the media attribute.. TODO.</li>
+			<li>This won't remove embedded CSS. <strong>Feature!</strong> Stop embedding CSS and using style attributes.</li>
 			<li>You are reloading all fly like a <a href="http://rvrt.us/47a956d">f6</a>.</li>
 		</ul>
 	</body>
