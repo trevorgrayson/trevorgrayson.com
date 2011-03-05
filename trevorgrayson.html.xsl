@@ -11,6 +11,7 @@
 <xsl:template match="/">
 <html>
 	<head>
+		<title>Trevor Grayson</title>
 		<link href='http://fonts.googleapis.com/css?family=Old+Standard+TT' rel='stylesheet' type='text/css'/>
 		<link type="text/css" rel="stylesheet" href="css/reset.css"/>
 		<link type="text/css" rel="stylesheet" href="css/trevorgrayson.css"/>
