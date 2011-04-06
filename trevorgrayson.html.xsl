@@ -118,7 +118,7 @@
 				</xsl:attribute>
 				<xsl:attribute name="target">_blank</xsl:attribute>
 	
-				<xsl:text>Find Me</xsl:text>
+				<xsl:text>Find Trevor</xsl:text>
 			</a>
 		</p>
 	</body>
