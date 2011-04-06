@@ -81,6 +81,17 @@
 	</script>
 	</head>
 	<body>
+		<!--
+		<xsl:attribute name="style">
+			<xsl:text disable-output-escaping="yes"><![CDATA[background:url(]]></xsl:text>
+			<xsl:text disable-output-escaping="yes"><![CDATA[http://maps.google.com/maps/api/staticmap?center=]]></xsl:text>
+			<xsl:value-of select="substring-after(//Placemark[1]/Point/coordinates,',')"/>
+			<xsl:text>,</xsl:text>
+			<xsl:value-of select="substring-before(//Placemark[1]/Point/coordinates,',')"/>
+			<xsl:text disable-output-escaping="yes"><![CDATA[&zoom=15&size=640x640&maptype=terrain&sensor=false]]></xsl:text>
+			<xsl:text disable-output-escaping="yes"><![CDATA[)]]></xsl:text>
+		</xsl:attribute>
+		-->
 		<h1><xsl:value-of select="//vc:FN"/></h1>
 		<ul class="menu">
 			<xsl:apply-templates/>
@@ -94,7 +105,21 @@
 					<xsl:value-of select="//Placemark[1]/name"/>
 				</a>
 			</span> 
+
 			<span class="time"><xsl:value-of select="substring-before(//Placemark[1]/updated, '+')"/></span>
+		</p>
+		<p class="location">
+			<a>
+				<xsl:attribute name="href">
+					<xsl:text disable-output-escaping="yes"><![CDATA[http://maps.google.com/?z=17&q=]]></xsl:text>
+					<xsl:value-of select="substring-after(//Placemark[1]/Point/coordinates,',')"/>
+					<xsl:text>,</xsl:text>
+					<xsl:value-of select="substring-before(//Placemark[1]/Point/coordinates,',')"/>
+				</xsl:attribute>
+				<xsl:attribute name="target">_blank</xsl:attribute>
+	
+				<xsl:text>Find Me</xsl:text>
+			</a>
 		</p>
 	</body>
 	<xsl:value-of select="//item[1]"/>

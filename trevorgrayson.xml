@@ -45,6 +45,6 @@
 		<format name="pdf" href="/resumes/TrevorGraysonResume.pdf"/>
 		<format name="html" href="/resumes/TrevorGraysonResume.html"/>
 	</resume>
-	<xi:include href="http://feeds.foursquare.com/history/1049fd6217aedd34625ab9db9644f0ef.kml"/>
+	<xi:include href="./foursquare.kml"/>
 </vCard>
 
