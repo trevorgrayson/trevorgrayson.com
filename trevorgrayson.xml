@@ -35,10 +35,14 @@
 		
 	</DESC>
 	<projects xmlns="http://trevorgrayson.com">
-		<project name="Remembory" href="http://remembory.com">Memory improved by membory.</project>
-		<project name="PhotoDB" href="http://thephotodb.com">A progressive Photo Management System.</project>
+    <!--
+    <project name="EightySix" href="http://eightysix.heroku.com">Making search into decisions.</project>
+    -->
+    <project name="Firr.st" href="http://firr.st">Sharing content with competition.</project>
+    <project name="LowDef" href="http://lowdef.co">Socially drawing infinity.</project>
 		<project name="Kibitz" href="http://trevorgrayson.com/kibitz">Navigate webpages with friends.</project>
-		<project name="Freelance" href="/freelance.html">Freelancing Projects</project>
+		<project name="Remembory" href="http://remembory.com">Memory improved by membory.</project>
+		<project name="PhotoDB" href="http://thephotodb.com" status="down">A progressive Photo Management System.</project>
 	</projects>
 	<resume xmlns="http://trevorgrayson.com">
 		<format name="doc" href="/resumes/TrevorGraysonResume.doc"/>
