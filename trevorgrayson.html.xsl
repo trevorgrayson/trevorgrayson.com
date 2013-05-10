@@ -144,7 +144,7 @@
       <li>fb: <a href="http://facebook.com/trevorgrayson">facebook</a></li>
       <li>in: <a href="http://www.linkedin.com/in/trevorgrayson">linkedin</a></li>
       <li>gh: <a href="http://github.com/trevorgrayson">github</a></li>
-      <li>so: <a href="http://stackoverflow.com/users/965161/rovertus">stackoverflow</a></li>
+      <li>so: <a href="http://stackoverflow.com/users/965161/trevorgrayson">stackoverflow</a></li>
       <li>e:  <a href="mailto:{vc:EMAIL}"><xsl:value-of select="vc:EMAIL"/></a></li>
       <li><a href="javascript:var name= prompt('What is your name?');XmppClient.init(name + '@trevorgrayson.com/' + name, 'password')">Talk Now</a></li>
     </ul>
