@@ -7,65 +7,65 @@
 <link type="text/css" rel="stylesheet" href="css/reset.css">
 <link type="text/css" rel="stylesheet" href="css/trevorgrayson.css">
 <script type="text/javascript" src="javascripts/jquery.min.js"></script><script type="text/javascript" src="javascripts/jsjac.js"></script><script type="text/javascript" src="javascripts/xmpp-client.js"></script><script type="text/javascript" src="http://widgets.twimg.com/j/2/widget.js"></script><script type="text/javascript">
-		var join_chat_message = "Talk back. Enter Message here."
+    var join_chat_message = "Talk back. Enter Message here."
 
-		rand = Math.floor(Math.random() * 100000000000).toString(); 
-		//xmppclient_nick= prompt("Hello! What's your name?",'anon' + rand);
-		//xmppclient_jid='anon' + rand + '@trevorgrayson.com/' + xmppclient_nick;
-		//xmppclient_password='password';
-		xmppclient_chatroom='tgrayson@trevorgrayson.com';
+    rand = Math.floor(Math.random() * 100000000000).toString(); 
+    //xmppclient_nick= prompt("Hello! What's your name?",'anon' + rand);
+    //xmppclient_jid='anon' + rand + '@trevorgrayson.com/' + xmppclient_nick;
+    //xmppclient_password='password';
+    xmppclient_chatroom='tgrayson@trevorgrayson.com';
 
-		$(document).ready(function(){
-			$('#msgArea').val(join_chat_message);
+    $(document).ready(function(){
+      $('#msgArea').val(join_chat_message);
 
-			$('#send_chat_form').submit(function() {
-				var message = $(this).find('.message').val();
+      $('#send_chat_form').submit(function() {
+        var message = $(this).find('.message').val();
 
-				if (message != '') { //don't send blank mesages!
-					$(this).find('.message').val('');
-				}
-				return false;
-			});
+        if (message != '') { //don't send blank mesages!
+          $(this).find('.message').val('');
+        }
+        return false;
+      });
 
-			$('#navigation_form').submit(function(e) {
-				var message = $('#navigation_url').val();
-				XmppClient.sendMsg(message);
+      $('#navigation_form').submit(function(e) {
+        var message = $('#navigation_url').val();
+        XmppClient.sendMsg(message);
 
-				return false;
-			});
+        return false;
+      });
 
-		});
-		function insert_twitter(){
-			new TWTR.Widget({
-				version: 2,
-				type: 'profile',
-				rpp: 1,
-				interval: 6000,
-				width: 197,
-				height: 300,
-				theme: {
-					shell: {
-						background: 'transparent',
-						color: '#000000'
-					},
-					tweets: {
-						background: 'transparent',
-						color: '#000000',
-						links: '#ab8526'
-					}
-				},
-				features: {
-					scrollbar: false,
-					loop: false,
-					live: false,
-					hashtags: true,
-					timestamp: true,
-					avatars: false,
-					behavior: 'all'
-				}
-			}).render().setUser('TrevorGrayson').start();
-		}
-	</script>
+    });
+    function insert_twitter(){
+      new TWTR.Widget({
+        version: 2,
+        type: 'profile',
+        rpp: 1,
+        interval: 6000,
+        width: 197,
+        height: 300,
+        theme: {
+          shell: {
+            background: 'transparent',
+            color: '#000000'
+          },
+          tweets: {
+            background: 'transparent',
+            color: '#000000',
+            links: '#ab8526'
+          }
+        },
+        features: {
+          scrollbar: false,
+          loop: false,
+          live: false,
+          hashtags: true,
+          timestamp: true,
+          avatars: false,
+          behavior: 'all'
+        }
+      }).render().setUser('TrevorGrayson').start();
+    }
+  </script>
 </head>
 <body>
 <h1>Trevor Grayson</h1>
@@ -73,16 +73,19 @@
 <li>
 <a href="#projects">projects</a><ul>
 <li>
-<a href="http://remembory.com">Remembory</a><p>Memory improved by membory.</p>
+<a href="http://firr.st">Firr.st</a><p>Sharing content with competition.</p>
 </li>
 <li>
-<a href="http://thephotodb.com">PhotoDB</a><p>A progressive Photo Management System.</p>
+<a href="http://fraktal.me">Fraktal</a><p>Socially drawing infinity.</p>
 </li>
 <li>
 <a href="http://trevorgrayson.com/kibitz">Kibitz</a><p>Navigate webpages with friends.</p>
 </li>
 <li>
-<a href="/freelance.html">Freelance</a><p>Freelancing Projects</p>
+<a href="http://remembory.com">Remembory</a><p>Memory improved by membory.</p>
+</li>
+<li>
+<a href="http://thephotodb.com">PhotoDB</a><p>A progressive Photo Management System.</p>
 </li>
 </ul>
 </li>
@@ -101,16 +104,22 @@
 </li>
 <li>
 <a href="#Contact">contact</a><ul>
-<li>Financial District, New York, NY.</li>
-<li>im: <a href="aim:goim?screenname=trevorgrayson">trevorgrayson</a>
+<li>Meatpacking District, New York, NY.</li>
+<li>fb: <a href="http://facebook.com/trevorgrayson">facebook</a>
 </li>
-<li>e: <a href="mailto:trevor@trevorgrayson.com">trevor@trevorgrayson.com</a>
+<li>in: <a href="http://www.linkedin.com/in/trevorgrayson">linkedin</a>
+</li>
+<li>gh: <a href="http://github.com/trevorgrayson">github</a>
+</li>
+<li>so: <a href="http://stackoverflow.com/users/965161/rovertus">stackoverflow</a>
+</li>
+<li>e:  <a href="mailto:trevor@trevorgrayson.com">trevor@trevorgrayson.com</a>
 </li>
 <li><a href="javascript:var%20name=%20prompt('What%20is%20your%20name?');XmppClient.init(name%20+%20'@trevorgrayson.com/'%20+%20name,%20'password')">Talk Now</a></li>
 </ul>
 </li>
 </ul>
-<script>insert_twitter();</script><p class="location"><span class="last-seen">Last Seen: @<a href="http://foursquare.com/venue/222021">2 Gold Street Apartments</a></span><span class="time">Wed, 06 Apr 11 00:07:13 </span></p>
-<p class="location"><a href="http://maps.google.com/?z=17&amp;q=40.707372,-74.007162" target="_blank">Find Me</a></p>
+<script>insert_twitter();</script><p class="location"><span class="last-seen">Last Seen: @<a href="http://foursquare.comhttps://foursquare.com/v/corsino/4ade1af7f964a520297321e3">Corsino</a></span><span class="time">Fri, 10 May 13 01:25:27 </span></p>
+<p class="location"><a href="http://maps.google.com/?z=17&amp;q=40.738738013303035,-74.0055191523553" target="_blank">Find Trevor</a></p>
 </body>
 </html>
