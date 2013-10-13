@@ -134,6 +134,7 @@ a {
 }
 
 .location .last-seen {
+  margin-top: 50px;
 	display: block;
 }
 

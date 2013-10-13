@@ -49,6 +49,7 @@
 
     });
     function insert_twitter(){
+      /*
       new TWTR.Widget({
         version: 2,
         type: 'profile',
@@ -77,6 +78,7 @@
           behavior: 'all'
         }
       }).render().setUser('TrevorGrayson').start();
+      */
     }
   </script>
   </head>
@@ -141,10 +143,15 @@
     </a>
     <ul>
       <xsl:apply-templates select="vc:ADR"/>
+      <li>trevorgrayson@<a href="http://facebook.com/trevorgrayson"><strong>facebook</strong></a></li>
+      <li>trevorgrayson@<a href="http://www.linkedin.com/in/trevorgrayson"><strong>linkedin</strong></a></li>
+      <li>trevorgrayson@<a href="http://github.com/trevorgrayson"><strong>github</strong></a></li>
+      <li>trevorgrayson@<a href="http://stackoverflow.com/trevorgrayson"><strong>stackoverflow</strong></a></li>
+      <li>trevorgrayson@<a href="mailto:{vc:EMAIL}"><strong>trevorgrayson.com</strong></a></li>
+
       <li>fb: <a href="http://facebook.com/trevorgrayson">facebook</a></li>
       <li>in: <a href="http://www.linkedin.com/in/trevorgrayson">linkedin</a></li>
       <li>gh: <a href="http://github.com/trevorgrayson">github</a></li>
-      <li>so: <a href="http://stackoverflow.com/users/965161/trevorgrayson">stackoverflow</a></li>
       <li>e:  <a href="mailto:{vc:EMAIL}"><xsl:value-of select="vc:EMAIL"/></a></li>
       <li><a href="javascript:var name= prompt('What is your name?');XmppClient.init(name + '@trevorgrayson.com/' + name, 'password')">Talk Now</a></li>
     </ul>
