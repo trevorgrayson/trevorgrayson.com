@@ -47,7 +47,6 @@
 	<resume xmlns="http://trevorgrayson.com">
 		<format name="doc" href="/resumes/TrevorGraysonResume.doc"/>
 		<format name="pdf" href="/resumes/TrevorGraysonResume.pdf"/>
-		<format name="html" href="/resumes/TrevorGraysonResume.html"/>
 	</resume>
 	<xi:include href="./foursquare.kml"/>
 </vCard>

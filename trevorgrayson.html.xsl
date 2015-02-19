@@ -99,7 +99,7 @@
       <xsl:apply-templates/>
     </ul>
     <script>insert_twitter();</script>
-    <p class="location">
+    <!--<p class="location">
       <span class="last-seen">
         <xsl:text>Last Seen: @</xsl:text>
         <a>
@@ -109,7 +109,7 @@
       </span> 
 
       <span class="time"><xsl:value-of select="substring-before(//Placemark[1]/updated, '+')"/></span>
-    </p>
+    </p>-->
     <p class="location">
       <a>
         <xsl:attribute name="href">
