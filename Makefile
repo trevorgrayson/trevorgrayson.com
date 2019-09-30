@@ -1,7 +1,7 @@
 HOST ?= amendment.io
 DEPLOY_DIR:=/srv/vhosts/
 SLUG:=tg.tgz
-TEMP:=tempfile
+TEMP:=$(shell tempfile)
 ARTIFACT:=dist/$(SLUG)
 
 package:
@@ -15,9 +15,8 @@ publish: package
 	ssh $(HOST) "tar Jxf $(DEPLOY_DIR)$(SLUG) -C $(DEPLOY_DIR)"
 
 deploy:
-	tar zxvf $(SLUG)
-	cp trevorgrayson.com/nginx.conf $(HOST):/etc/nginx/sites-available/
-	ln -s /etc/nginx/sites-available/$(PROJECT).conf /etc/nginx/sites-enabled/$(PROJECT).conf
+	scp nginx.conf $(HOST):/etc/nginx/sites-available/
+	ln -s /etc/nginx/sites-available/$(PROJECT).conf $(DEPLOY_DIR)/$(PROJECT)/nginx.conf
 	# restart nginx
 
 clean:
