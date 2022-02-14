@@ -1,7 +1,7 @@
 HOST ?= amendment.io
 DEPLOY_DIR:=/srv/vhosts/
 SLUG:=tg.tgz
-TEMP:=$(shell tempfile)
+TEMP:=$(shell mktemp)
 ARTIFACT:=dist/$(SLUG)
 
 package:

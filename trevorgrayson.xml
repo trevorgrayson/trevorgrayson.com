@@ -46,7 +46,7 @@
 		<project name="Remembory" href="http://remembory.com">Memory improved by membory.</project>
 	</projects>
 	<resume xmlns="http://trevorgrayson.com">
-		<format name="doc" href="/resumes/TrevorGraysonResume.doc"/>
+		<format name="doc" href="/resumes/TrevorGraysonResume.docx"/>
 		<format name="pdf" href="/resumes/TrevorGraysonResume.pdf"/>
 	</resume>
 	<xi:include href="./foursquare.kml"/>
